@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Test</title>
+</head>
+<body>
+    <h1>EmailJS Configuration Test</h1>
+    
+    <form onsubmit="testEmail(event)">
+        <input type="text" id="name" placeholder="Your Name" required><br><br>
+        <input type="email" id="email" placeholder="Your Email" required><br><br>
+        <textarea id="message" placeholder="Your Message" required></textarea><br><br>
+        <button type="submit" id="submit-btn">Test Send</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Your exact configuration
+        const config = {
+            publicKey: "XvpIbLKXqIjsSbXpw",
+            serviceId: "service_ov1kq3j",        
+            templateId: "template_d8d2kep"       
+        };
+
+        // Initialize EmailJS
+        emailjs.init({
+            publicKey: config.publicKey,
+        });
+
+        console.log("Test initialized with:", config);
+
+        function testEmail(event) {
+            event.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Testing...';
+            resultDiv.innerHTML = 'Sending test email...';
+
+            const templateParams = {
+                name: document.getElementById('name').value,        // Changed from from_name
+                email: document.getElementById('email').value,      // Changed from from_email
+                message: document.getElementById('message').value   // Kept same
+            };
+
+            console.log('Sending with params:', templateParams);
+            console.log('Service:', config.serviceId, 'Template:', config.templateId);
+
+            emailjs.send(config.serviceId, config.templateId, templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS:', response);
+                    resultDiv.innerHTML = `<p style="color: green;">✅ SUCCESS! Status: ${response.status}</p>`;
+                    alert('Test email sent successfully!');
+                })
+                .catch(function(error) {
+                    console.error('FULL ERROR OBJECT:', error);
+                    console.error('Error status:', error.status);
+                    console.error('Error text:', error.text);
+                    console.error('Error name:', error.name);
+                    console.error('Error message:', error.message);
+                    console.error('Error stack:', error.stack);
+                    
+                    resultDiv.innerHTML = `<p style="color: red;">❌ ERROR: ${error.status} - ${error.text || error.message}</p>`;
+                    
+                    if (error.status === 412) {
+                        resultDiv.innerHTML += `
+                            <div style="background: #ffe6e6; padding: 10px; margin: 10px 0; border-left: 4px solid red;">
+                                <strong>412 Error Diagnosis:</strong><br>
+                                • Service ID "${config.serviceId}" - Check if it exists and is ACTIVE<br>
+                                • Template ID "${config.templateId}" - Check if it exists and is SAVED<br>
+                                • Email service - Check if it's CONNECTED (not disconnected)<br>
+                                • Account limits - Check if daily limit exceeded<br><br>
+                                <strong>Next steps:</strong><br>
+                                1. Go to EmailJS Dashboard → Email Services<br>
+                                2. Check if your service shows "Connected" status<br>
+                                3. Go to Email Templates → Check if template is saved<br>
+                                4. Try sending a test email from EmailJS dashboard first
+                            </div>
+                        `;
+                    }
+                    
+                    // Also try to get more error details
+                    if (error.response) {
+                        console.error('Error response:', error.response);
+                        resultDiv.innerHTML += `<p>Response: ${JSON.stringify(error.response)}</p>`;
+                    }
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Test Send';
+                });
+        }
+
+        // Check configuration on load
+        window.onload = function() {
+            console.log('EmailJS loaded:', typeof emailjs !== 'undefined');
+            console.log('Configuration check:');
+            console.log('- Public Key:', config.publicKey);
+            console.log('- Service ID:', config.serviceId);
+            console.log('- Template ID:', config.templateId);
+        };
+    </script>
+</body>
+</html>
