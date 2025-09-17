@@ -1,0 +1,332 @@
+/*** CLEAN HERO SECTION - COMPACT DESIGN ***/
+.hero-header {
+    background: linear-gradient(135deg, #FDF5EB 0%, #F8F0E3 50%, #F5EBD8 100%);
+    position: relative;
+    padding: 100px 0 50px 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: auto !important;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(234, 166, 54, 0.15);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.badge-text {
+    font-weight: 500;
+    color: var(--dark);
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 2.8rem !important;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem !important;
+}
+
+.title-accent {
+    color: var(--primary);
+    font-weight: 300;
+}
+
+.title-main {
+    color: var(--dark);
+}
+
+.title-highlight {
+    background: linear-gradient(45deg, var(--primary), #F6D55C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1rem !important;
+    color: var(--secondary);
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 1rem !important;
+}
+
+.hero-description {
+    margin: 1rem 0 !important;
+}
+
+.description-line {
+    font-size: 0.9rem !important;
+    color: var(--dark);
+    line-height: 1.6;
+    margin-bottom: 8px !important;
+    font-weight: 400;
+    padding: 8px 15px !important;
+    background: linear-gradient(135deg, rgba(234, 166, 54, 0.1), rgba(246, 213, 92, 0.1));
+    border-left: 3px solid var(--primary) !important;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.description-line:last-child {
+    margin-bottom: 0 !important;
+}
+
+.description-line i {
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.hero-features {
+    display: flex;
+    gap: 1rem !important;
+    flex-wrap: wrap;
+    margin-top: 1rem !important;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    padding: 8px 14px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 0.85rem !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(234, 166, 54, 0.2);
+}
+
+.hero-showcase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem !important;
+    padding: 0 !important;
+}
+
+.single-hero-image {
+    width: 85% !important;
+    height: 350px !important;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+    border-radius: 20px;
+    padding: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.single-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.floating-stats {
+    display: flex;
+    gap: 15px !important;
+    margin-top: 15px !important;
+    justify-content: center;
+}
+
+.stat-item {
+    background: white;
+    padding: 10px 15px !important;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-width: 80px !important;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.4rem !important;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.7rem !important;
+    color: var(--secondary);
+    font-weight: 500;
+}
+
+/* Override any conflicting styles */
+.hero-header * {
+    position: static !important;
+    transition: all 0.3s ease !important;
+}
+
+.hero-header .container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.hero-header .row {
+    margin-top: 0 !important;
+}
+
+/* Fix navbar overlap */
+.navbar {
+    z-index: 1030 !important;
+}
+
+/* Smooth scrolling fix */
+html, body {
+    scroll-behavior: smooth !important;
+}
+
+/* Ensure proper section flow */
+.hero-header + * {
+    margin-top: 0 !important;
+    padding-top: 50px !important;
+}
+
+/* Fix all sections spacing */
+.container-xxl, .py-5 {
+    margin-top: 0 !important;
+}
+
+section {
+    margin-top: 0 !important;
+    clear: both;
+}
+
+/* Responsive Design for Hero Section */
+@media (max-width: 992px) {
+    .hero-header {
+        padding: 80px 0 40px 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem !important;
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+        text-align: center;
+    }
+    
+    .hero-description {
+        padding: 0 10px;
+        text-align: center;
+    }
+    
+    .hero-features {
+        justify-content: center;
+        gap: 0.8rem !important;
+    }
+    
+    .single-hero-image {
+        width: 90% !important;
+        height: 320px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-header {
+        padding: 70px 0 30px 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem !important;
+        padding: 0 15px;
+    }
+    
+    .hero-badge {
+        padding: 5px 10px;
+        font-size: 0.65rem;
+    }
+    
+    .badge-text {
+        font-size: 0.65rem;
+    }
+    
+    .description-line {
+        font-size: 0.85rem !important;
+        padding: 6px 12px !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .feature-item {
+        padding: 6px 10px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .single-hero-image {
+        width: 95% !important;
+        height: 280px !important;
+    }
+    
+    .floating-stats {
+        gap: 10px !important;
+    }
+    
+    .stat-item {
+        padding: 8px 12px !important;
+        min-width: 70px !important;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem !important;
+    }
+    
+    .stat-label {
+        font-size: 0.65rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-header {
+        padding: 60px 0 20px 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem !important;
+    }
+    
+    .hero-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem !important;
+    }
+    
+    .feature-item {
+        justify-content: center;
+        min-width: 150px;
+    }
+    
+    .single-hero-image {
+        width: 100% !important;
+        height: 250px !important;
+    }
+}
